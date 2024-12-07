@@ -23,9 +23,11 @@ const UploadFiles: React.FC = () => {
     []
   );
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [toastMessage1, setToastMessage1] = useState<string | null>(null);
   const [isSubmitting, setISubmitting] = useState<boolean>(false);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
   const [enteredUrl, setEnteredUrl] = useState<string>('');
+  const [errorMessage, setErrorMessage] = useState('');
   //   const [fileInfos, setFileInfos] = useState<{ name: string; url: string }[]>([]);
 
   //   useEffect(() => {
@@ -100,12 +102,17 @@ const UploadFiles: React.FC = () => {
         setEnteredUrl('');
       }, 3000);
     } catch (error) {
-      setToastMessage(`Failed to upload URL: ${enteredUrl}`);
+      setToastMessage1(`Failed to upload URL: ${enteredUrl}`);
       setISubmitting(false);
     }
   };
 
   const uploadFiles = () => {
+    if (!selectedFiles && enteredUrl.trim() === '') {
+      setToastMessage1(`Provide Some Link`)
+      return ;
+    } 
+
     if (selectedFiles) {
       const _progressInfos = Array.from(selectedFiles).map((file) => ({
         percentage: 0,
@@ -136,13 +143,15 @@ const UploadFiles: React.FC = () => {
 
         {/* <div className='row my-3'> */}
         {!isSubmitting && (
-          <div className='mt-10 flex flex-col gap-x-6'>
+
+          <div className='mt-10 flex flex-col gap-x-6  '>
             <div className='grid w-full max-w-sm items-center gap-1.5'>
+
               <Label className='font-bold' htmlFor='file'>
                 Choose File
               </Label>
 
-              <div className='flex flex-col items-center gap-y-6'>
+              <div className='flex flex-col items-center gap-y-6 '>
                 <div>
                   <Input id='file' type='file' multiple onChange={selectFiles} />
                   <span className='mt-5 text-xs text-gray-600'>
@@ -152,25 +161,45 @@ const UploadFiles: React.FC = () => {
                 </div>
                 <Input
                   placeholder='Enter URL'
+                  className=' py-6'
                   id='url'
                   type='url'
                   value={enteredUrl}
                   onChange={handleUrl}
                 />
-
-                <Button
-                  variant='default'
-                  size='sm'
-                  disabled={!selectedFiles && enteredUrl.trim() === ''}
-                  // disabled={isSubmitting}
+                 <Button
+                  variant="ghost"
+                  size="sm"
+                  // disabled={!selectedFiles && enteredUrl.trim() === ''}
                   onClick={uploadFiles}
-                  style={{ width: '50%' }}
+                  style={{ width: '100%' }}
+                  className="bg-gray-900 text-white rounded-lg transition-all duration-300 hover:bg-gray-800 hover:text-white hover:scale-105 disabled:bg-gray-400 disabled:cursor-not-allowed w-full px-6 py-5 text-lg"
                 >
                   Upload
                 </Button>
-                <Button variant='outline' style={{ width: 'w-100%', marginTop: '10px' }}>
-                  Create
+
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  style={{ width: '100%' }}
+                  className="bg-gray-900 text-white  rounded-lg transition-all duration-300 hover:bg-gray-800 hover:text-white hover:scale-105 disabled:bg-gray-400 disabled:cursor-not-allowed w-full px-6 py-5 text-lg"
+                >
+                  Create Document
                 </Button>
+
+               
+
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  style={{ width: '100%' }}
+                  disabled={true}
+                  className="bg-gray-900 text-white rounded-lg transition-all duration-300 hover:bg-gray-800 hover:text-white hover:scale-105 disabled:bg-gray-400 disabled:cursor-not-allowed w-full px-8 py-4"
+                >
+                  Import from S3
+                </Button>
+
+
               </div>
             </div>
           </div>
@@ -194,6 +223,17 @@ const UploadFiles: React.FC = () => {
             <ToastClose />
           </Toast>
         )}
+          {toastMessage1 && (
+          <Toast
+            variant='default'
+            className='bg-red-500 text-white' // Customize with color
+          >
+            <ToastTitle>Error</ToastTitle>
+            <ToastDescription>{toastMessage1}</ToastDescription>
+            <ToastClose />
+          </Toast>
+        )}
+
 
         {/* <div className='card'>
         <div className='card-header'>List of Files</div>

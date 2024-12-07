@@ -21,7 +21,7 @@ type Message = {
 };
 
 export default function ChatSupport() {
-  const id = uuidv4();
+  let id = uuidv4();
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState<string>('');
   const messagesRef = useRef<HTMLDivElement>(null);
@@ -137,16 +137,19 @@ export default function ChatSupport() {
   };
 
   return (
-    <div className='flex h-[100vh] w-full flex-col bg-stone-950 text-white'>
+    <div className='flex h-[100vh] w-full flex-col bg-gray-100 text-white'>
       {/* Chat Header */}
       <ExpandableChatHeader className='w-full flex-col justify-center p-4 text-center'>
-        <h1 className='text-xl font-semibold'>Chat with our AI ✨</h1>
-        <p>Ask any question for our AI to answer</p>
+        <h1 className='text-xl font-medium mt-2 text-gray-600'>Chat with our AI ✨</h1>
+        <p className='text-sm font-medium mt-2 text-gray-600'>Ask any question for our AI to answer</p>
         <div className='flex items-center gap-2 pt-2'>
-          <Button variant='secondary' onClick={() => setMessages([])}>
+          <Button variant='outline' className='bg-gray-200 text-gray-800 text-sm px-6 py-2 rounded-lg hover:bg-gray-300 transition-all duration-300' onClick={() => {
+            id = uuidv4(); setMessages([]);
+          }}>
             New Chat
           </Button>
-          <Button variant='secondary'>See FAQ</Button>
+
+          {/* <Button variant='secondary'>See FAQ</Button> */}
         </div>
       </ExpandableChatHeader>
 
@@ -181,6 +184,7 @@ export default function ChatSupport() {
               width: '8%',
               height: '47px'
             }}
+            className="bg-gray-900 text-white rounded-lg transition-all duration-300 hover:bg-gray-800 hover:text-white disabled:cursor-not-allowed w-full px-6 py-5 text-lg"
           >
             Send
           </Button>

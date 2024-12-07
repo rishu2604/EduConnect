@@ -70,7 +70,7 @@ const ChatBubbleAvatar: React.FC<ChatBubbleAvatarProps> = ({ src, fallback, clas
 const chatBubbleMessageVariants = cva('p-4', {
   variants: {
     variant: {
-      received: 'bg-secondary text-secondary-foreground rounded-r-lg rounded-tl-lg',
+      received: 'bg-gray-300 text-secondary-foreground rounded-r-lg rounded-tl-lg',
       sent: 'bg-gray-700 text-primary-foreground rounded-l-lg rounded-tr-lg'
     },
     layout: {
