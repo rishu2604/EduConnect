@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import ChatSupport from './components/chat';
+import CreateOwn from './components/CreateOwn';
 import HomePage from './components/HomePage';
 
 const router = createBrowserRouter([
@@ -11,6 +12,10 @@ const router = createBrowserRouter([
   {
     path: '/chat',
     element: <ChatSupport />
+  },
+  {
+    path: '/create',
+    element: <CreateOwn />
   }
 ]);
 

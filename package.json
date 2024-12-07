@@ -23,6 +23,9 @@
     "test:ui": "playwright test --ui"
   },
   "dependencies": {
+    "@blocknote/core": "^0.20.0",
+    "@blocknote/mantine": "^0.20.0",
+    "@blocknote/react": "^0.20.0",
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
     "@fortawesome/free-brands-svg-icons": "^6.6.0",
     "@fortawesome/free-regular-svg-icons": "^6.6.0",
@@ -34,6 +37,7 @@
     "@radix-ui/react-progress": "^1.1.0",
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-toast": "^1.2.2",
+    "@uiw/react-markdown-preview": "^5.1.3",
     "axios": "^1.7.9",
     "bootstrap": "^5.3.3",
     "class-variance-authority": "^0.7.0",
@@ -43,6 +47,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.2",
+    "style.css": "link:@blocknote/core/style.css",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",
     "uuid": "^11.0.3"
