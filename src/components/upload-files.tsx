@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
 
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 import Gif from '../assets/images/Animation - 1733519997555.gif';
 import Done from '../assets/images/Done.mp4';
@@ -35,6 +36,8 @@ const UploadFiles: React.FC = () => {
   //       setFileInfos(response.data);
   //     });
   //   }, []);
+
+  const navigate = useNavigate();
 
   const selectFiles = (event: ChangeEvent<HTMLInputElement>) => {
     setProgressInfos([]);
@@ -197,6 +200,12 @@ const UploadFiles: React.FC = () => {
                   className="bg-gray-900 text-white rounded-lg transition-all duration-300 hover:bg-gray-800 hover:text-white hover:scale-105 disabled:bg-gray-400 disabled:cursor-not-allowed w-full px-8 py-4"
                 >
                   Import from S3
+                <Button
+                  variant='outline'
+                  onClick={navigate('/create')}
+                  style={{ width: 'w-100%', marginTop: '10px' }}
+                >
+                  Create
                 </Button>
 
 
