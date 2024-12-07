@@ -200,12 +200,6 @@ const UploadFiles: React.FC = () => {
                   className="bg-gray-900 text-white rounded-lg transition-all duration-300 hover:bg-gray-800 hover:text-white hover:scale-105 disabled:bg-gray-400 disabled:cursor-not-allowed w-full px-8 py-4"
                 >
                   Import from S3
-                <Button
-                  variant='outline'
-                  onClick={navigate('/create')}
-                  style={{ width: 'w-100%', marginTop: '10px' }}
-                >
-                  Create
                 </Button>
 
 
