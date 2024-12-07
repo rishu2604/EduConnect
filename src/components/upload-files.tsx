@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
 
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 import Gif from '../assets/images/Animation - 1733519997555.gif';
 import Done from '../assets/images/Done.mp4';
@@ -33,6 +34,8 @@ const UploadFiles: React.FC = () => {
   //       setFileInfos(response.data);
   //     });
   //   }, []);
+
+  const navigate = useNavigate();
 
   const selectFiles = (event: ChangeEvent<HTMLInputElement>) => {
     setProgressInfos([]);
@@ -168,7 +171,11 @@ const UploadFiles: React.FC = () => {
                 >
                   Upload
                 </Button>
-                <Button variant='outline' style={{ width: 'w-100%', marginTop: '10px' }}>
+                <Button
+                  variant='outline'
+                  onClick={navigate('/create')}
+                  style={{ width: 'w-100%', marginTop: '10px' }}
+                >
                   Create
                 </Button>
               </div>
