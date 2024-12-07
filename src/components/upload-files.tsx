@@ -165,7 +165,6 @@ const UploadFiles: React.FC = () => {
                   variant='default'
                   size='sm'
                   disabled={!selectedFiles && enteredUrl.trim() === ''}
-                  // disabled={isSubmitting}
                   onClick={uploadFiles}
                   style={{ width: '50%' }}
                 >
@@ -173,7 +172,7 @@ const UploadFiles: React.FC = () => {
                 </Button>
                 <Button
                   variant='outline'
-                  onClick={navigate('/create')}
+                  onClick={() => navigate('/create')}
                   style={{ width: 'w-100%', marginTop: '10px' }}
                 >
                   Create
